@@ -1,0 +1,74 @@
+<section class ="home-section">
+  <h1>EL Historiador</h1>
+  <div class=" calendar">
+    <i class="fas fa-calendar-alt"></i>
+    <p>Lunes~Domino</p>
+  </div>
+  <div class="location">
+    <i class="fas fa-map-marker-alt"></i>
+    <p>San Rafael E/ Calle 10 y Calle 11</p>
+  </div>
+  <div class ="hours">
+    <i class="fas fa-clock"></i>
+    <p>10:00AM ~ 12:00PM</p>
+  </div>
+ 
+</section>
+
+<div id="wrapper">
+  <ul class="menu-list">
+    <li>
+      <a href="#" (click)="seleccionarCategoria('entrantes')">
+        <i class="fas fa-utensils"></i>
+        <div>Entrantes</div>
+      </a>
+    </li>
+    <li>
+      <a href="#" (click)="seleccionarCategoria('platos-fuertes')">
+        <i class="fas fa-drumstick-bite"></i>
+        <div>Platos Fuertes</div>
+      </a>
+    </li>
+    <li>
+      <a href="#" (click)="seleccionarCategoria('bebidas')">
+        <i class="fas fa-glass-martini"></i>
+        <div>Bebidas</div>
+      </a>
+    </li>
+    <li>
+      <a href="#" (click)="seleccionarCategoria('postres')">
+        <i class="fas fa-ice-cream"></i>
+        <div>Postres</div>
+      </a>
+    </li>
+    <li>
+      <a href="#" (click)="seleccionarCategoria('sugerencias')">
+        <i class="fas fa-user-tie"></i>
+        <div>Sugerencias del Chef</div>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="categoriaSeleccionada" class="menu-items">
+  <div *ngFor="let item of obtenerItems(categoriaSeleccionada)" class="blog-card">
+    <div class="meta">
+      <div class="photo" [style.background-image]="'url(assets/' + item.imagen + ')'"></div>
+    </div>
+    <div class="description">
+      <h1><u>{{ item.nombre }}</u></h1> <!-- Nombre subrayado -->
+      <h2>{{ item.descripcion }}</h2> <!-- Descripción -->
+      <div class="precio-cantidad">
+        <span class="precio">{{ item.precio | currency }}</span> <!-- Precio -->
+        <input
+          type="number"
+          min="1"
+          [(ngModel)]="item.cantidad"
+          placeholder="Cantidad"
+          class="cantidad-input"
+        />
+        <button (click)="agregarItemAlCarrito(item)" class="add-to-cart-btn">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>

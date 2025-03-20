@@ -1,0 +1,97 @@
+
+<div class="carrito-container">
+  <div class="carrito-icono">
+    <fa-icon [icon]="faShoppingCart"></fa-icon>
+    <span class="carrito-contador">{{ cantidadTotal }}</span>
+  </div>
+  <button type="button" (click)="abrirModal()" class="ver-orden-btn">Ver Orden</button>
+</div>
+
+<!-- Modal para ver la orden -->
+<div class="modal-overlay" *ngIf="mostrarModal">
+  <div class="modal">
+    <h2>Detalles de la Orden</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Plato</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Subtotal</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of carrito">
+          <td>{{ item.nombre }}</td>
+          <td>{{ item.cantidad }}</td>
+          <td>{{ item.precio }}</td>
+          <td>{{ calcularSubtotal(item) }}</td>
+          <td>
+            <button type="button" (click)="reducirCantidad(item)" class="reducir-btn" aria-label="Reducir cantidad">
+              <fa-icon [icon]="faMinus"></fa-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="total">
+      <strong>SubTotal:</strong> {{ calcularTotal() }}
+      <p class="warning">Delivery no incluido</p>
+    </div>
+    <div class="modal-botones">
+      <button type="button" (click)="cerrarModal()" class="cerrar-btn">Cerrar</button>
+      <button type="button" (click)="cambiarModal()" class="ordenar-btn">Ordenar</button>
+    </div>
+  </div>
+</div>
+<!-- Modal de formulario de pago -->
+<div class="modal-overlay" *ngIf="mostrarFormularioPago">
+  <div class="modal formulario-pago">
+    <h2>Finalizar Pedido</h2>
+    
+    <div class="form-group">
+      <label>Nombre completo:</label>
+      <input type="text" [(ngModel)]="nombreCliente" placeholder="Ej: Juan Pérez(Opcional)">
+    </div>
+    <!-- Dirección -->
+    <div class="form-group">
+      <label>Dirección de entrega:</label>
+      <textarea [(ngModel)]="direccion" rows="2" placeholder="Ej: Vedado, Ave 23, entre A y B(Obligatorio)"></textarea>
+      <div class="error-msg" *ngIf="intentoEnvio && !direccion">
+        ¡Debes ingresar una dirección!
+      </div>
+    </div>
+
+    <div class="metodos-pago">
+      <label>Método de pago:</label>
+      <div class="opciones-pago">
+        <button type="button" 
+                (click)="metodoPago = 'efectivo'" 
+                [class.seleccionado]="metodoPago === 'efectivo'">
+          <fa-icon [icon]="metodoPago === 'efectivo' ? faCheckCircle : faCircle"></fa-icon>
+          Efectivo
+        </button>
+        
+        <button type="button" 
+                (click)="metodoPago = 'transferencia'" 
+                [class.seleccionado]="metodoPago === 'transferencia'">
+          <fa-icon [icon]="metodoPago === 'transferencia' ? faCheckCircle : faCircle"></fa-icon>
+          Transferencia
+        </button>
+      </div>
+      <div class="error-msg" *ngIf="intentoEnvio && !metodoPago">
+        ¡Debes ingresar un metodo de pago!
+      </div>
+    </div>
+
+    <div class="modal-botones">
+      <button type="button" (click)="mostrarFormularioPago = false" class="cerrar-btn">
+        Cancelar
+      </button>
+      <button type="button" (click)="confirmarPago()" class="ordenar-btn">
+        Confirmar Pedido
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,236 @@
+.carrito-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: rgba(210, 180, 140, 0.8); /* Fondo beige oscuro */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.carrito-icono {
+  position: relative;
+  cursor: pointer;
+  color: #5a3e36; /* Color marrón oscuro */
+}
+
+.carrito-contador {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #a0522d; /* Color marrón rojizo */
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+.ver-orden-btn {
+  background-color: #8b4513; /* Color marrón oscuro */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.ver-orden-btn:hover {
+  background-color: #a0522d; /* Color marrón rojizo al hacer hover */
+}
+
+/* Estilos para el modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: #8b4513; /* Fondo marrón oscuro */
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: #f5f5dc; /* Texto beige claro */
+
+}
+
+.modal h2 {
+  margin-top: 0;
+  text-align: center;
+  color: #f5f5dc; /* Texto beige claro */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f5f5dc; /* Texto beige claro */
+}
+
+th {
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente para las cabeceras */
+  font-weight: bold;
+}
+
+.total {
+  text-align: right;
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #f5f5dc; /* Texto beige claro */
+}
+
+.modal-botones {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cerrar-btn, .ordenar-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.cerrar-btn {
+  background-color: #a0522d; /* Color marrón rojizo */
+  color: white;
+}
+
+.cerrar-btn:hover {
+  background-color: #8b4513; /* Color marrón oscuro al hacer hover */
+}
+
+.ordenar-btn {
+  background-color: #8b4513; /* Color marrón oscuro */
+  color: white;
+}
+
+.ordenar-btn:hover {
+  background-color: #a0522d; /* Color marrón rojizo al hacer hover */
+}
+
+.reducir-btn {
+  background-color: #a0522d; /* Color marrón rojizo */
+  color: white;
+  border: none;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.reducir-btn:hover {
+  background-color: #8b4513; /* Color marrón oscuro al hacer hover */
+}
+
+/* Estilos para la nueva columna de acciones */
+table th:last-child,
+table td:last-child {
+  text-align: center;
+  width: 60px; /* Ancho fijo para la columna de acciones */
+}
+.total{
+  text-align: left;
+}
+.warning{
+  text-decoration: underline;
+}
+/*Formulario*/
+.formulario-pago {
+  max-width: 600px;
+  background-color: #5a3e36; /* Marrón oscuro */
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #f5f5dc; /* Beige claro */
+}
+
+.form-group input, 
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d2b48c; /* Beige oscuro */
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #f5f5dc;
+}
+
+.metodos-pago {
+  margin: 1rem 0;
+}
+
+.opciones-pago {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.opciones-pago button {
+  flex: 1;
+  padding: 10px;
+  background-color: #a0522d; /* Marrón rojizo */
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.opciones-pago button.seleccionado {
+  background-color: #8b4513; /* Marrón más oscuro */
+  border: 2px solid #d2b48c; /* Borde beige */
+}
+
+/* Iconos de check */
+fa-icon {
+  font-size: 1.2em;
+}
+
+/* Errores */
+.error-msg {
+  color: #ff4444;
+  font-size: 0.9em;
+  margin-top: 4px;
+}
+
+/* Campos no válidos */
+input:invalid, textarea:invalid {
+  border-color: #ff4444 !important;
+}
+
+input:invalid + .error-msg,
+textarea:invalid + .error-msg {
+  display: block;
+}
